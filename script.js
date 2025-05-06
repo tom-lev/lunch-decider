@@ -2,16 +2,16 @@
 
 function decideLunch(option1, option2) {
     if (!option1 || !option2) {
-        console.log("Please provide two options for lunch.");
-        return;
+        return "Please enter two options.";
     }
 
     const decision = Math.random() < 0.5 ? option1 : option2;
-    console.log(`You should have ${decision} for lunch!`);
+    return `You should have ${decision} for lunch!`;
 }
 
-// Example usage
-const lunchOption1 = "Pizza";
-const lunchOption2 = "Sushi";
-
-decideLunch(lunchOption1, lunchOption2);
+document.getElementById("decideBtn").addEventListener("click", () => {
+    const option1 = document.getElementById("option1").value.trim();
+    const option2 = document.getElementById("option2").value.trim();
+    const result = decideLunch(option1, option2);
+    document.getElementById("result").textContent = result;
+});
