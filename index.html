@@ -4,15 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lunch Picker</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>What's for Lunch?</h1>
+  <header>
+    <h1>What's for Lunch?</h1>
+  </header>
 
-  <input type="text" id="option1" placeholder="Enter first option" />
-  <input type="text" id="option2" placeholder="Enter second option" />
-  <button id="decideBtn">Decide</button>
+  <main>
+    <div class="input-group">
+      <input type="text" id="option1" placeholder="Enter first option" />
+      <input type="text" id="option2" placeholder="Enter second option" />
+      <button id="decideBtn">Decide</button>
+    </div>
+    <p id="result"></p>
+  </main>
 
-  <p id="result"></p>
+  <footer>
+    <p>&copy; 2025 Lunch Picker App</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
