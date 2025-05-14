@@ -31,12 +31,18 @@
       <button id="decideBtn">Decide</button>
     </div>
 
-    <p id="result" class="result">Please select your lunch options!</p>
+    <p id="result" class="result">
+      <span id="spinner" class="spinner" style="display: none;"></span>
+      <span id="resultText">Please select your lunch options!</span>
+    </p>
   </main>
 
   <footer>
     <p>&copy; 2025 Lunch Picker App</p>
   </footer>
+
+  <!-- Sound effect -->
+  <audio id="chime" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.wav" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
