@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lunch Picker</title>
-<link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -14,20 +14,27 @@
 
   <main>
     <div class="input-group">
-<input list="lunch-options" id="option1" placeholder="Choose or type option 1">
-<input list="lunch-options" id="option2" placeholder="Choose or type option 2">
+      <input list="lunch-options" id="option1" placeholder="Choose or type option 1">
+      <input list="lunch-options" id="option2" placeholder="Choose or type option 2">
 
-<datalist id="lunch-options">
-  <option value="Pizza">
-  <option value="Sushi">
-  <option value="Burger">
-  <option value="Salad">
-  <option value="Falafel">
-  <option value="Sandwich">
-  <option value="Pasta">
-</datalist>
+      <datalist id="lunch-options">
+        <option value="Pizza">
+        <option value="Sushi">
+        <option value="Burger">
+        <option value="Salad">
+        <option value="Falafel">
+        <option value="Sandwich">
+        <option value="Pasta">
+      </datalist>
+
+      <div class="add-option-group">
+        <input type="text" id="newOption" placeholder="Add a new lunch option" />
+        <button id="addOptionBtn">Add Option</button>
+      </div>
+
       <button id="decideBtn">Decide</button>
     </div>
+
     <p id="result" class="result">Please select your lunch options!</p>
   </main>
 
