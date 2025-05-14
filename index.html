@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+⁹<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -46,31 +46,6 @@
   <source src="success-340660.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-
-Make sure the file name exactly matches (success-340660.mp3) and is placed next to your HTML file.
-
-Also, in your JavaScript, keep this part:
-
-chime.currentTime = 0;
-chime.play().catch(error => {
-  console.warn("Audio playback failed:", error);
-});
-
-If the file is still not playing, double-check:
-
-1. That the MP3 file is not corrupted.
-
-
-2. You’re not running the HTML file via file:// (use a local server like VS Code Live Server).
-
-
-3. There are no typos in the filename or path.
-
-
-
-Let me know if you want help setting up a local server to test it properly.
-
-
 
   <script src="script.js"></script>
 </body>
