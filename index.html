@@ -14,8 +14,18 @@
 
   <main>
     <div class="input-group">
-      <input type="text" id="option1" placeholder="Enter first option" />
-      <input type="text" id="option2" placeholder="Enter second option" />
+<input list="lunch-options" id="option1" placeholder="Choose or type option 1">
+<input list="lunch-options" id="option2" placeholder="Choose or type option 2">
+
+<datalist id="lunch-options">
+  <option value="Pizza">
+  <option value="Sushi">
+  <option value="Burger">
+  <option value="Salad">
+  <option value="Falafel">
+  <option value="Sandwich">
+  <option value="Pasta">
+</datalist>
       <button id="decideBtn">Decide</button>
     </div>
     <p id="result" class="result">Please select your lunch options!</p>
