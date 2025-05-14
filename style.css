@@ -7,52 +7,114 @@
 
 /* Body Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f8f9;
     color: #333;
-    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
     padding: 20px;
 }
 
 /* Header Styling */
 header {
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #f3a683, #f7b731);
     color: white;
-    padding: 10px 20px;
+    padding: 30px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
 }
 
 /* Main Content Styling */
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+/* Input Group Styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #f7b731;
+    box-shadow: 0 0 5px rgba(247, 183, 49, 0.5);
 }
 
 /* Button Styling */
 button {
-    background-color: #4CAF50;
+    background-color: #f7b731;
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #f3a683;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #e88e37;
+}
+
+/* Result Styling */
+#result {
+    font-size: 1.5em;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    transition: opacity 0.5s ease;
+}
+
+.result {
+    opacity: 0;
+    font-size: 1.5em;
 }
 
 /* Footer Styling */
 footer {
     text-align: center;
-    margin-top: 20px;
+    padding: 10px 0;
+    background: #f7f8f9;
     font-size: 14px;
-    color: #777;
+    color: #555;
+    width: 100%;
+    border-top: 1px solid #ddd;
 }
