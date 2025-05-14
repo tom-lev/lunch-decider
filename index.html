@@ -13,9 +13,9 @@
   </header>
 
   <main>
-    <div class="input-group">
-      <input list="lunch-options" id="option1" placeholder="Choose or type option 1">
-      <input list="lunch-options" id="option2" placeholder="Choose or type option 2">
+    <div class="input-group" id="inputGroup">
+      <input list="lunch-options" placeholder="Choose or type an option" class="lunch-input">
+      <input list="lunch-options" placeholder="Choose or type an option" class="lunch-input">
 
       <datalist id="lunch-options">
         <option value="Pizza">
@@ -27,11 +27,7 @@
         <option value="Pasta">
       </datalist>
 
-      <div class="add-option-group">
-        <input type="text" id="newOption" placeholder="Add a new lunch option" />
-        <button id="addOptionBtn">Add Option</button>
-      </div>
-
+      <button id="addOptionBtn" type="button">Add Another Option</button>
       <button id="decideBtn">Decide</button>
     </div>
 
