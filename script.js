@@ -5,10 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const spinner = document.getElementById("spinner");
   const chime = document.getElementById("chime");
 
+  const foodOptions = [
+    "Pizza", "Sushi", "Burger", "Salad", "Falafel", "Sandwich", "Pasta",
+    "Tacos", "Ramen", "Shawarma", "Burrito", "Hummus", "Steak", "Noodles",
+    "Pad Thai", "Dumplings", "Curry", "Pho", "Bagel", "Soup"
+  ];
+
   // Initialize Awesomplete for existing inputs
   document.querySelectorAll(".lunch-input").forEach(input => {
-    const list = input.getAttribute("data-list")?.split(",").map(x => x.trim()) || [];
-    new Awesomplete(input, { list, minChars: 0, maxItems: 7 });
+    new Awesomplete(input, { list: foodOptions, minChars: 0, maxItems: 7 });
 
     input.addEventListener("focus", () => {
       input.dispatchEvent(new Event("input")); // trigger dropdown
@@ -19,11 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.createElement("input");
     input.classList.add("lunch-input", "awesomplete");
     input.setAttribute("placeholder", "Choose or type an option");
-    input.setAttribute("data-list", "Pizza, Sushi, Burger, Salad, Falafel, Sandwich, Pasta");
     inputGroup.insertBefore(input, document.getElementById("addOptionBtn"));
 
-    const list = input.getAttribute("data-list").split(",").map(x => x.trim());
-    new Awesomplete(input, { list, minChars: 0, maxItems: 7 });
+    new Awesomplete(input, { list: foodOptions, minChars: 0, maxItems: 7 });
 
     input.addEventListener("focus", () => {
       input.dispatchEvent(new Event("input"));
