@@ -59,23 +59,16 @@ main {
   width: 100%;
 }
 
-/* Input and Button Shared Sizing */
-.lunch-input,
-button {
-  height: 56px;
-  width: 100%;
-  max-width: 400px;
+/* Input Styling */
+.lunch-input {
+  padding: 18px;
   font-size: 18px;
   border-radius: 8px;
-}
-
-/* Input Specific Styling */
-.lunch-input {
-  padding: 0 12px;
   border: 2px solid #e0e0e0;
   transition: border-color 0.3s, box-shadow 0.3s;
   outline: none;
-  background-color: white;
+  width: 100%;
+  max-width: 400px;
 }
 
 .lunch-input:focus {
@@ -83,13 +76,18 @@ button {
   box-shadow: 0 0 5px rgba(247, 183, 49, 0.5);
 }
 
-/* Button Specific Styling */
+/* Button Styling */
 button {
   background-color: #f7b731;
   color: white;
   border: none;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 400px;
 }
 
 button:hover {
