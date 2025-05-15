@@ -59,16 +59,23 @@ main {
   width: 100%;
 }
 
-/* Input Styling (for Awesomplete inputs) */
-.lunch-input {
-  padding: 18px; 
+/* Input and Button Shared Sizing */
+.lunch-input,
+button {
+  height: 56px;
+  width: 100%;
+  max-width: 400px;
   font-size: 18px;
   border-radius: 8px;
+}
+
+/* Input Specific Styling */
+.lunch-input {
+  padding: 0 12px;
   border: 2px solid #e0e0e0;
   transition: border-color 0.3s, box-shadow 0.3s;
   outline: none;
-  width: 100%;
-  max-width: 400px;
+  background-color: white;
 }
 
 .lunch-input:focus {
@@ -76,18 +83,13 @@ main {
   box-shadow: 0 0 5px rgba(247, 183, 49, 0.5);
 }
 
-/* Button Styling */
+/* Button Specific Styling */
 button {
   background-color: #f7b731;
   color: white;
   border: none;
-  padding: 18px;  /* match input padding */
-  font-size: 18px;
-  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  width: 100%;
-  max-width: 400px;
 }
 
 button:hover {
@@ -161,7 +163,7 @@ footer {
   background-color: white;
   border: 2px solid #f7b731;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-top: 4px;
   padding: 0;
   list-style: none;
