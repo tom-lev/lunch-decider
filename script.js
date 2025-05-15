@@ -5,13 +5,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const spinner = document.getElementById("spinner");
   const chime = document.getElementById("chime");
 
-  document.getElementById("addOptionBtn").addEventListener("click", () => {
-    const input = document.createElement("input");
-    input.setAttribute("list", "lunch-options");
-    input.setAttribute("placeholder", "Choose or type an option");
-    input.classList.add("lunch-input");
-    inputGroup.insertBefore(input, document.getElementById("addOptionBtn"));
+document.getElementById("addOptionBtn").addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.classList.add("lunch-input", "awesomplete");
+  input.setAttribute("placeholder", "Choose or type an option");
+  input.setAttribute("data-list", "Pizza, Sushi, Burger, Salad, Falafel, Sandwich, Pasta");
+  inputGroup.insertBefore(input, document.getElementById("addOptionBtn"));
+
+  // Initialize Awesomplete on the new input
+  new Awesomplete(input, {
+    minChars: 0,
+    maxItems: 7
   });
+
+  // Optional: open dropdown when focused
+  input.addEventListener("focus", () => {
+    input.dispatchEvent(new Event("input"));
+  });
+});
 
   document.getElementById("decideBtn").addEventListener("click", () => {
     const inputs = document.querySelectorAll(".lunch-input");

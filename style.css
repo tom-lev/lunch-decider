@@ -150,3 +150,25 @@ footer {
   width: 100%;
   border-top: 1px solid #ddd;
 }
+/* Awesomplete Dropdown Custom Styling */
+.awesomplete > ul {
+  background-color: white;
+  border: 2px solid #f7b731;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.awesomplete li {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.awesomplete li:hover,
+.awesomplete li[aria-selected="true"] {
+  background-color: #f7b731;
+  color: white;
+}

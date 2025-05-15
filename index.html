@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lunch Picker</title>
+  <!-- Awesomplete CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,19 +16,8 @@
 
   <main>
     <div class="input-group" id="inputGroup">
-      <input list="lunch-options" placeholder="Choose or type an option" class="lunch-input">
-      <input list="lunch-options" placeholder="Choose or type an option" class="lunch-input">
-
-      <datalist id="lunch-options">
-        <option value="Pizza">
-        <option value="Sushi">
-        <option value="Burger">
-        <option value="Salad">
-        <option value="Falafel">
-        <option value="Sandwich">
-        <option value="Pasta">
-      </datalist>
-
+<input class="lunch-input awesomplete" data-list="Pizza, Sushi, Burger, Salad, Falafel, Sandwich, Pasta" placeholder="Choose or type an option">
+<input class="lunch-input awesomplete" data-list="Pizza, Sushi, Burger, Salad, Falafel, Sandwich, Pasta" placeholder="Choose or type an option">
       <button id="addOptionBtn" type="button">Add Another Option</button>
       <button id="decideBtn">Decide</button>
     </div>
@@ -46,6 +37,8 @@
   <source src="success-340660.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
+<!-- Awesomplete JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
 
   <script src="script.js"></script>
 </body>
