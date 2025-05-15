@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize Awesomplete for existing inputs
   document.querySelectorAll(".lunch-input").forEach(input => {
-    new Awesomplete(input, { list: foodOptions, minChars: 0, maxItems: 7 });
+    new Awesomplete(input, { list: foodOptions, minChars: 0, maxItems: 50 });
 
     input.addEventListener("focus", () => {
       input.dispatchEvent(new Event("input")); // trigger dropdown
