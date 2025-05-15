@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const foodOptions = [
     "Pizza", "Sushi", "Burger", "Salad", "Falafel", "Sandwich", "Pasta",
-    "Tacos", "Ramen", "Shawarma", "Burrito", "Hummus", "Steak", "Noodles",
-    "Pad Thai", "Dumplings", "Curry", "Pho", "Bagel", "Soup"
+    "Tacos", "Ramen", "Shawarma", "Burrito", "Hummus", "Steak", "Noodles"
   ];
 
   // Initialize Awesomplete for existing inputs
