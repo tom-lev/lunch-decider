@@ -3,7 +3,7 @@
 **Never settle for lunch indecision again!**  
 A fun and interactive web app that helps you choose between meal options, complete with sound effects, animations, and smart input validation.
 
-![Lunch Picker Screenshot](https://i.ibb.co/k6H38s8z/29ff2448-742d-4cc7-a4b0-38eb08d528a2.jpg)  
+![Lunch Picker Screenshot](https://i.ibb.co/7JBgcWs7/2992fe2d-00c4-4929-b7bb-8d255d37f71e.jpg)  
 <sub><em>Screenshot of the Lunch Picker interface in action</em></sub>
 
 ## ✨ Features
