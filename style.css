@@ -75,6 +75,7 @@ input[list]:focus {
 
 /* Button Styling */
 button {
+  width: 100%;
   background-color: #f7b731;
   color: white;
   border: none;
