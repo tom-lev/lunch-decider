@@ -5,21 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const spinner = document.getElementById("spinner");
   const chime = document.getElementById("chime");
   
-  // Store original options
+  // Store original options in lowercase
   const originalOptions = Array.from(document.getElementById("lunch-options").options)
     .map(option => option.value);
+  const originalOptionsLower = originalOptions.map(option => option.toLowerCase());
 
-  // Function to update datalist based on selected values
   function updateDatalist() {
     const currentValues = Array.from(document.querySelectorAll(".lunch-input"))
-      .map(input => input.value.trim())
-      .filter(Boolean);
+      .map(input => input.value.trim().toLowerCase());
     
     const datalist = document.getElementById("lunch-options");
     datalist.innerHTML = '';
     
-    originalOptions.forEach(option => {
-      if (!currentValues.includes(option)) {
+    originalOptions.forEach((option, index) => {
+      if (!currentValues.includes(originalOptionsLower[index])) {
         const optionElement = document.createElement("option");
         optionElement.value = option;
         datalist.appendChild(optionElement);
@@ -27,15 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Input validation function
   function validateInput(input) {
     const currentValue = input.value.trim();
     if (!currentValue) return true;
 
+    const currentLower = currentValue.toLowerCase();
     const otherInputs = Array.from(document.querySelectorAll(".lunch-input"))
       .filter(otherInput => otherInput !== input);
 
-    if (otherInputs.some(other => other.value.trim() === currentValue)) {
+    if (otherInputs.some(other => other.value.trim().toLowerCase() === currentLower)) {
       resultText.textContent = `${currentValue} is already selected!`;
       resultElement.style.opacity = 1;
       input.value = '';
@@ -43,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return true;
   }
+
 
   // Add new input field
   document.getElementById("addOptionBtn").addEventListener("click", () => {
