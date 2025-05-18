@@ -1,6 +1,6 @@
 # Lunch Picker 🍽️ - Decision Helper App
 
-![Demo Screenshot](https://via.placeholder.com/600x400.png?text=Lunch+Picker+Demo+Preview) 
+!https://ibb.co/zHn8RTRC) 
 *(Replace with actual screenshot)*
 
 A fun and interactive web application that helps indecisive people choose their lunch meal. Perfect for teams, friends, or anyone who can't decide what to eat!
