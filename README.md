@@ -15,8 +15,16 @@ A fun and interactive web application that helps indecisive people choose their 
 - **Zero Dependencies**: Pure vanilla JavaScript, CSS, and HTML
 - **Customizable**: Easily modify options and styling
 
-## Installation 🛠️
+## 🚀 Usage
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/lunch-picker.git
+Add your lunch options:
+
+1. Start with **2 default input fields**.
+2. Click **"Add Another Option"** to add more choices.
+3. Select from **predefined options** or type in your own.
+4. Click **"Decide"** to let the app choose randomly:
+   - 🎯 Watch the **spinning animation** while the app "thinks"
+   - 🔔 Hear a **satisfying chime** when the decision is made
+   - 🎉 See your result with a **fun pop animation**
+
+Enjoy your lunch decision with style!
