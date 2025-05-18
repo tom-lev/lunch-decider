@@ -4,12 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultText = document.getElementById("resultText");
   const spinner = document.getElementById("spinner");
   const chime = document.getElementById("chime");
-  
-  // Store original options in lowercase
+
+  // Store original options
   const originalOptions = Array.from(document.getElementById("lunch-options").options)
     .map(option => option.value);
   const originalOptionsLower = originalOptions.map(option => option.toLowerCase());
 
+  // Popup functions
+  function showPopup(message) {
+    const popup = document.getElementById("errorPopup");
+    const messageElement = document.getElementById("popupMessage");
+    messageElement.textContent = message;
+    popup.style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("errorPopup").style.display = "none";
+  }
+
+  // Popup event listeners
+  document.getElementById("popupClose").addEventListener("click", closePopup);
+  document.getElementById("errorPopup").addEventListener("click", (e) => {
+    if (e.target === document.getElementById("errorPopup")) {
+      closePopup();
+    }
+  });
+
+  // Update datalist options
   function updateDatalist() {
     const currentValues = Array.from(document.querySelectorAll(".lunch-input"))
       .map(input => input.value.trim().toLowerCase());
@@ -26,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Input validation
   function validateInput(input) {
     const currentValue = input.value.trim();
     if (!currentValue) return true;
@@ -35,14 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .filter(otherInput => otherInput !== input);
 
     if (otherInputs.some(other => other.value.trim().toLowerCase() === currentLower)) {
-      resultText.textContent = `${currentValue} is already selected!`;
-      resultElement.style.opacity = 1;
+      showPopup(`${currentValue} is already selected!`);
       input.value = '';
       return false;
     }
     return true;
   }
-
 
   // Add new input field
   document.getElementById("addOptionBtn").addEventListener("click", () => {
@@ -51,11 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
     input.setAttribute("placeholder", "Choose or type an option");
     input.classList.add("lunch-input");
     
-    // Add validation to new input
     input.addEventListener("input", () => {
       if (validateInput(input)) {
         updateDatalist();
-        resultElement.style.opacity = 0;
       }
     });
     
@@ -68,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("input", () => {
       if (validateInput(input)) {
         updateDatalist();
-        resultElement.style.opacity = 0;
       }
     });
   });
@@ -77,11 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("decideBtn").addEventListener("click", () => {
     const inputs = document.querySelectorAll(".lunch-input");
     const options = [...inputs].map(input => input.value.trim()).filter(val => val);
-    const uniqueOptions = [...new Set(options)];
+    const uniqueOptions = [...new Set(options.map(option => option.toLowerCase()))]
+      .map(lowerCase => options.find(option => option.toLowerCase() === lowerCase));
 
     if (uniqueOptions.length < 2) {
-      resultText.textContent = "Please enter at least two unique options.";
-      resultElement.style.opacity = 1;
+      showPopup("Please enter at least two unique options!");
       return;
     }
 
@@ -93,9 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const decision = uniqueOptions[Math.floor(Math.random() * uniqueOptions.length)];
       resultText.textContent = `You should have ${decision} for lunch!`;
       spinner.style.display = "none";
+      
       resultText.classList.remove("pop");
       void resultText.offsetWidth;
       resultText.classList.add("pop");
+      
       chime.currentTime = 0;
       chime.play();
     }, 1000);
