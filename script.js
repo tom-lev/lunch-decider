@@ -119,4 +119,21 @@ document.addEventListener("DOMContentLoaded", () => {
       chime.play();
     }, 1000);
   });
-});
+    // Mute button logic
+  const muteBtn = document.getElementById("muteBtn");
+  let isMuted = false;
+
+  function updateMuteIcon() {
+    muteBtn.textContent = isMuted ? '🔇' : '🔊';
+    muteBtn.setAttribute('aria-pressed', isMuted);
+  }
+
+  muteBtn.addEventListener("click", () => {
+    isMuted = !isMuted;
+    chime.muted = isMuted;
+    updateMuteIcon();
+  });
+
+  updateMuteIcon();
+
+}); 

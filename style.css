@@ -199,3 +199,29 @@ footer {
 #popupClose:hover {
   background: #f3a683;
 }
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px; /* Smaller margin to bring them closer */
+}
+
+.action-buttons button {
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s, color 0.3s;
+  margin: 0;
+
+}
+
+.action-buttons button:hover {
+  color: #f7b731;
+  transform: scale(1.2);
+}
+
+.action-buttons button:active {
+  color: #e88e37;
+}
