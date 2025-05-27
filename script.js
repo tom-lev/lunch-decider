@@ -4,6 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultText = document.getElementById("resultText");
   const spinner = document.getElementById("spinner");
   const chime = document.getElementById("chime");
+  const muteBtn = document.getElementById("muteBtn");
+
+  // Load saved mute state
+let isMuted = localStorage.getItem("muteState") === "true";
+chime.muted = isMuted;
+if (muteBtn) muteBtn.textContent = isMuted ? "🔇" : "🔊";
+
+if (muteBtn) {
+  muteBtn.addEventListener("click", () => {
+    isMuted = !isMuted;
+    chime.muted = isMuted;
+    muteBtn.textContent = isMuted ? "🔇" : "🔊";
+    localStorage.setItem("muteState", isMuted);
+  });
+}
 
   // Store original options
   const originalOptions = Array.from(document.getElementById("lunch-options").options)
