@@ -199,3 +199,15 @@ footer {
 #popupClose:hover {
   background: #f3a683;
 }
+.system-button {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.system-button:hover {
+  transform: scale(1.1);
+}
