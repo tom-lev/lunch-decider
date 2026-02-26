@@ -3,63 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lunch Picker</title>
+  <title>Lunch Picker 🍽️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Lunch Picker</h1>
-    <p>Can't decide? Let us help!</p>
-  </header>
 
-  <main>
-    <div class="input-group" id="inputGroup">
-      <input list="lunch-options" placeholder="Choose or type an option" class="lunch-input">
-      <input list="lunch-options" placeholder="Choose or type an option" class="lunch-input">
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-      <datalist id="lunch-options">
-        <option value="Pizza">
-        <option value="Sushi">
-        <option value="Burger">
-        <option value="Salad">
-        <option value="Falafel">
-        <option value="Sandwich">
-        <option value="Pasta">
-      </datalist>
-
-      <button id="addOptionBtn" type="button">Add Another Option</button>
-      <button id="decideBtn">Decide</button>
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <div class="login-logo">🍽️</div>
+      <h2 class="login-title">Lunch<br><span>Picker</span></h2>
+      <p class="login-sub">היכנס כדי לשמור את ההיסטוריה שלך</p>
+      <button id="googleSignInBtn" class="btn-google">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="22">
+        המשך עם Google
+      </button>
     </div>
+  </div>
 
-<div class="system-buttons">
-  <button id="muteBtn" class="system-button" type="button">🔊</button>
-  <!-- Future buttons go here -->
-</div>
+  <!-- ===== APP ===== -->
+  <div class="app-wrapper" id="appWrapper" style="display:none;">
 
-    <p id="result" class="result">
-      <span id="spinner" class="spinner" style="display: none;"></span>
-      <span id="resultText">Please select your lunch options!</span>
-    </p>
-  </main>
+    <header>
+      <div class="logo-mark">🍽️</div>
+      <h1>Lunch<br><span>Picker</span></h1>
+      <p class="tagline">Stop overthinking. Start eating.</p>
+      <div class="user-bar" id="userBar">
+        <img id="userAvatar" class="user-avatar" src="" alt="">
+        <span id="userName" class="user-name"></span>
+        <button id="signOutBtn" class="btn-signout">יציאה</button>
+      </div>
+    </header>
 
-  <footer>
-    <p>&copy; 2025 Lunch Picker App</p>
-  </footer>
+    <main>
 
+      <!-- Stats bar -->
+      <div class="stats-bar" id="statsBar">
+        <div class="stat">
+          <span class="stat-num" id="totalDecisions">–</span>
+          <span class="stat-label">decisions made</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="topChoice">–</span>
+          <span class="stat-label">most picked today</span>
+        </div>
+      </div>
 
-<audio id="chime" preload="auto">
-  <source src="success-340660.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+      <!-- Input Section -->
+      <div class="card" id="inputCard">
+        <div class="card-label">Your options</div>
+        <div id="inputGroup" class="input-group"></div>
+        <button id="addOptionBtn" class="btn-secondary" type="button">
+          <span class="btn-icon">+</span> Add option
+        </button>
+        <button id="decideBtn" class="btn-primary" type="button">
+          <span class="btn-text">Pick for me!</span>
+          <span class="btn-shimmer"></span>
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div class="result-card" id="resultCard">
+        <div class="result-label">Today you're having</div>
+        <div class="result-dish" id="resultDish"></div>
+        <div class="result-emoji" id="resultEmoji"></div>
+        <button class="btn-ghost" id="rePickBtn">Pick again →</button>
+      </div>
+
+      <!-- History -->
+      <div class="history-card" id="historyCard">
+        <div class="history-header">
+          <span class="history-title">Recent picks</span>
+          <span class="history-badge" id="historyCount">0</span>
+        </div>
+        <ul id="historyList" class="history-list"></ul>
+      </div>
+
+    </main>
+
+    <footer>
+      <span>© 2025 Lunch Picker</span>
+      <button id="muteBtn" class="mute-btn" type="button">🔊</button>
+    </footer>
+  </div>
+
+  <!-- Error Popup -->
+  <div id="errorPopup" class="popup-overlay">
+    <div class="popup-box">
+      <div class="popup-icon">⚠️</div>
+      <p id="popupMessage"></p>
+      <button id="popupClose" class="btn-primary">Got it</button>
+    </div>
+  </div>
+
+  <audio id="chime" preload="auto">
+    <source src="success-340660.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, where, Timestamp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDaq8zb9G3OfcFcNPJC58RlBYtT6ltrRbU",
+      authDomain: "lunch-decider-fbe29.firebaseapp.com",
+      projectId: "lunch-decider-fbe29",
+      storageBucket: "lunch-decider-fbe29.firebasestorage.app",
+      messagingSenderId: "619674983687",
+      appId: "1:619674983687:web:5a638dd5378a75168939a2",
+      measurementId: "G-XPMJCNVYY4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // Sign in
+    document.getElementById("googleSignInBtn").addEventListener("click", async () => {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (e) {
+        console.error("Sign in failed:", e);
+        alert("ההתחברות נכשלה. נסה שוב.");
+      }
+    });
+
+    // Sign out
+    document.getElementById("signOutBtn").addEventListener("click", () => {
+      signOut(auth);
+    });
+
+    // Auth state listener
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Show app, hide login
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("appWrapper").style.display = "flex";
+
+        // Show user info
+        document.getElementById("userAvatar").src = user.photoURL || "";
+        document.getElementById("userName").textContent = user.displayName || user.email;
+
+        // Pass user to app
+        window.__currentUser = user;
+        window.__db = db;
+        window.__firebase = { collection, addDoc, getDocs, query, orderBy, limit, where, Timestamp };
+        window.dispatchEvent(new CustomEvent("firebaseReady", { detail: { user } }));
+      } else {
+        // Show login
+        document.getElementById("loginScreen").style.display = "flex";
+        document.getElementById("appWrapper").style.display = "none";
+        window.__currentUser = null;
+      }
+    });
+  </script>
 
   <script src="script.js"></script>
-  
-  <div id="errorPopup" class="popup-container">
-  <div class="popup-content">
-    <p id="popupMessage"></p>
-    <button id="popupClose">OK</button>
-  </div>
-</div>
-
 </body>
 </html>
